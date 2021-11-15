@@ -33,7 +33,7 @@
             </v-menu>
             <v-spacer></v-spacer>
             <v-btn text @click="submit" class="success mx-0 mt-3"
-              >Add Project1</v-btn
+              >Add Project1</v-btn 
             >
           </v-form>
         </v-card-text>
