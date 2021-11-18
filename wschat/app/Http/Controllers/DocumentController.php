@@ -11,12 +11,14 @@ class DocumentController extends Controller
 {
     //
     function store(Request $request){
+        return $request;
         if (!$request->hasFile('file')) {
             // Nếu không thì in ra thông báo
             return "Mời chọn file cần upload";
         }else{
             $file = $request->file('file');
-            $path = Storage::putFile('avatars', $file);
+           // $name  = 
+            $path = Storage::putFile('document', $file);
             return $path;
             // Storage::disk('local')->put('avatar/1', file_get_contents($file));
 
@@ -25,11 +27,11 @@ class DocumentController extends Controller
 
     }
     function downloadFile(){
-        $file=storage_path('app').'/avatars/demo.docx';
+        $file=storage_path('app').'/avatars/pp.pptx';
         $headers = [
-             'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            //  'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         ];
-        return response()->download($file, 'demo.docx', $headers);
+        return response()->download($file, 'pp.pptx', $headers);
     }
 
 }

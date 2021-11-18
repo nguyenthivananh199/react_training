@@ -56,8 +56,9 @@ Route::group( ['prefix' => 'lesson','middleware' => ['auth:api']],function(){
 
 });
 Route::group( ['prefix' => 'test','middleware' => ['auth:api']],function(){
+    Route::post("/save_history", [TestController::class, 'insertHistory']);
     Route::get("/list", [TestController::class, 'list']);
-    Route::put("/update/{id}", [TestController::class, 'update']);
+    Route::post("/update/{id}", [TestController::class, 'update']);
     Route::delete("/delete/{id}", [TestController::class, 'delete']);
     Route::post("/create", [TestController::class, 'store']);
     Route::get("/{id}", [TestController::class, 'getDetail']);
