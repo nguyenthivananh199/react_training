@@ -31,6 +31,7 @@ Route::middleware('auth:api')->get("/users", [UserController::class, 'index']);
 // user
 // Route::get("/users", [UserController::class, 'index']);
 Route::group( ['prefix' => 'user','middleware' => ['auth:api']],function(){
+    Route::get("/me", [UserController::class, 'getProfile']);
     Route::post("/store", [UserController::class, 'store']);
     Route::put("/update/{id}", [UserController::class, 'update']);
     Route::delete("/delete/{id}", [UserController::class, 'delete']);

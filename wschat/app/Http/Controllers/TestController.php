@@ -50,11 +50,12 @@ class TestController extends Controller
         $test->time=$request->time;
         $questions= $request->questions;
         $tmp=array();
-        
+        $updateQuest=array();
         for($i =0; $i< count($questions);$i++){
             if($questions[$i]['questionId']!=-1){
         //    $tmp.push($questions[$i]['id']);
            array_push($tmp, $questions[$i]['questionId']);
+           array_push($updateQuest, $questions[$i]);
 
             }
 
@@ -65,6 +66,39 @@ class TestController extends Controller
            Question::find($q[$i]['id'])->delete();
 
         }
+        for($i =0; $i< count($updateQuest);$i++){
+           // update old question
+           $oldQues=Question::find($updateQuest[$i]['questionId']);
+           $oldQues->question=$updateQuest[$i]["question"];
+           $oldQues->correctAns=$updateQuest[$i]['correct'];
+           $oldQues->ans1=$updateQuest[$i]['answers'][0];
+           $oldQues->ans2=$updateQuest[$i]['answers'][1];
+           $oldQues->ans3=$updateQuest[$i]['answers'][2];
+           $oldQues->ans4=$updateQuest[$i]['answers'][3];
+           $oldQues->explaination= $updateQuest[$i]["explaination"];
+           $oldQues->type=$updateQuest[$i]["type"];
+           $oldQues->save();
+
+        }
+        for($i =0; $i< count($questions);$i++){
+            if($questions[$i]['questionId']==-1){
+                // tao moi cau
+                $newQuestion=new Question();
+                $newQuestion->test_id=$id;
+                $newQuestion->question=$questions[$i]['question'];
+                $newQuestion->correctAns=$questions[$i]['correct'];
+                $newQuestion->ans1=$questions[$i]['answers'][0];
+                $newQuestion->ans2=$questions[$i]['answers'][1];
+                $newQuestion->ans3=$questions[$i]['answers'][2];
+                $newQuestion->ans4=$questions[$i]['answers'][3];
+                $newQuestion->explaination= $questions[$i]["explaination"];
+                $newQuestion->type=$questions[$i]["type"];
+                $newQuestion->save();
+
+            }
+
+        }
+        
         return response()->json([
            'oki'], 200);
     }

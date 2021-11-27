@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 class UserController extends Controller
 {
     //
+    function getProfile(Request $request){
+         $user=User::where('api_token', $request->bearerToken())->first();
+        return response()->json([
+            'user' => $user], 200);
+    }
     function index(){
         return User::where("userActive","1")->get();
     }

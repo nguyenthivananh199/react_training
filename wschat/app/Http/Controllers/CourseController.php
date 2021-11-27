@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Lesson;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -13,17 +14,38 @@ class CourseController extends Controller
         return Course::where('active','1')->get();
     }
     function store(Request $request){
-        $course= new Course();
-        $course->courseName=$request->name;
-        $course->courseStatus=$request->status;
-        $course->courseActive='1';
-        $course->courseDescription=$request->description;
-        $course->courseLevel= $request->level;
-        $course->courseSubject=$request->subject;
-        $course->user_id =$request->user_id;
-        $course->save();
-        return response()->json([
-            'message' => 'sucess'], 200);
+
+        // $course= new Course();
+        // $course->courseName=$request->courseName;
+        // $course->courseStatus=$request->courseStatus;
+        // $course->courseActive='1';
+        // $course->courseDescription=$request->courseDescription;
+        // $course->courseLevel= $request->courseLevel;
+        // $course->courseSubject=$request->courseSubject;
+        // $course->user_id =Auth::id();
+        // $course->save();
+        if (!$request->hasFile('file0')) {
+            // Nếu không thì in ra thông báo
+            return response()->json([
+                'message' => 'ok'], 200);
+        }else{
+            // thêm lesson
+            $i=0;
+            $fileName='file'.$i;
+            while($request->hasFile('file'.$i)){
+                
+                $i++;
+
+            }
+            return response()->json([
+                'message' => $i], 200);
+        }
+            // $file = $request->file('file0');
+            
+
+        
+       
+       
 
     }
     function update(Request $request,$id){
