@@ -11,41 +11,28 @@ class CourseController extends Controller
 {
     //
     function list(){
-        return Course::where('active','1')->get();
+        $listCourses=array();
+        $list= Course::with('lessons_active')->with('member_course_active')->get();
+        // for($i=0;$i<count($list);$i++){
+        //     $tmp=Course::find($list[$i]['id'])->lessons_active;
+        //     array_push($listCourses, $tmp);
+        //     $listCourses[$i]->append($list[$i]);
+        // }
+        return $list;
     }
     function store(Request $request){
 
-        // $course= new Course();
-        // $course->courseName=$request->courseName;
-        // $course->courseStatus=$request->courseStatus;
-        // $course->courseActive='1';
-        // $course->courseDescription=$request->courseDescription;
-        // $course->courseLevel= $request->courseLevel;
-        // $course->courseSubject=$request->courseSubject;
-        // $course->user_id =Auth::id();
-        // $course->save();
-        if (!$request->hasFile('file0')) {
-            // Nếu không thì in ra thông báo
-            return response()->json([
-                'message' => 'ok'], 200);
-        }else{
-            // thêm lesson
-            $i=0;
-            $fileName='file'.$i;
-            while($request->hasFile('file'.$i)){
-                
-                $i++;
-
-            }
-            return response()->json([
-                'message' => $i], 200);
-        }
-            // $file = $request->file('file0');
-            
-
-        
-       
-       
+        $course= new Course();
+        $course->courseName=$request->courseName;
+        $course->courseStatus=$request->courseStatus;
+        $course->courseActive='1';
+        $course->courseDescription=$request->courseDescription;
+        $course->courseLevel= $request->courseLevel;
+        $course->courseSubject=$request->courseSubject;
+        $course->user_id =Auth::id();
+        $course->save();
+        return response()->json([
+            'message' => 'ok'], 200);   
 
     }
     function update(Request $request,$id){
@@ -73,8 +60,9 @@ class CourseController extends Controller
     }
     function detail($id){
         $course=Course::find($id);
+        $lesson= Lesson::where('course_id',$id)->where("lessonActive",'1')->get();
         return response()
-            ->json(['course' => $course]);
+            ->json(['course' => $course,'lessons'=>$lesson]);
     }
 
 }

@@ -13,5 +13,10 @@ class Lesson extends Model
         'summary',
         'lessonActive',
         'video',
+        'lessonIndex',
     ];
+    public function course()
+    {
+      return $this->belongsTo(Course::class);
+    }
 }

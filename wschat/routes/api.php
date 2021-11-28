@@ -52,7 +52,9 @@ Route::group( ['prefix' => 'course'],function(){
     
 });
 Route::group( ['prefix' => 'lesson','middleware' => ['auth:api']],function(){
-    Route::put("/update/{id}", [LessonController::class, 'update']);
+    Route::get("/detail/{id}", [LessonController::class, 'detail']);
+    Route::post("/create", [LessonController::class, 'store']);
+    Route::post("/update/{id}", [LessonController::class, 'update']);
     Route::delete("/delete/{id}", [LessonController::class, 'delete']);
 
 });
@@ -74,3 +76,4 @@ Route::middleware('auth:api')->post("/chat/roomm/{roomId}/message", [ChatControl
 
 Route::middleware('auth:api')->post("/document/create", [DocumentController::class, 'store']);
 Route::get("/document/download", [DocumentController::class, 'downloadFile']);
+Route::get("/document/lessons/{id}", [DocumentController::class, 'getVideo']);
