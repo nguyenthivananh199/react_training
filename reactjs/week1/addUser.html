@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            list-style: none;
+            text-decoration: none;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: #f5f6fa;
+        }
+
+        .wrapper .sidebar {
+            background: rgb(5, 68, 104);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 225px;
+            height: 100%;
+            padding: 20px 0;
+            transition: all 0.5s ease;
+        }
+
+        .wrapper .sidebar .profile {
+            display: flex;
+            padding-left: 45px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .small {
+            padding-left: 55px !important;
+
+        }
+
+        .wrapper .sidebar .profile img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .wrapper .sidebar .profile h3 {
+            color: #ffffff;
+            margin: 10px 0 5px;
+        }
+
+        .wrapper .sidebar .profile p {
+            color: rgb(206, 240, 253);
+            font-size: 14px;
+        }
+
+        .wrapper .sidebar ul li a {
+            display: block;
+            padding: 0px 0px 13px 30px;
+            color: rgb(241, 237, 237);
+            font-size: 16px;
+            position: relative;
+        }
+
+        .wrapper .sidebar ul li a .icon {
+            color: #dee4ec;
+            width: 30px;
+            display: inline-block;
+        }
+
+
+
+        .wrapper .sidebar ul li a:hover,
+        .wrapper .sidebar ul li a.active {
+            color: #0c7db1;
+
+
+            border-right: 2px solid rgb(5, 68, 104);
+        }
+
+        .wrapper .sidebar ul li a:hover .icon,
+        .wrapper .sidebar ul li a.active .icon {
+            color: #0c7db1;
+        }
+
+        .wrapper .sidebar ul li a:hover:before,
+        .wrapper .sidebar ul li a.active:before {
+            display: block;
+        }
+
+        .wrapper .section {
+            width: calc(100% - 225px);
+            margin-left: 225px;
+            transition: all 0.5s ease;
+        }
+
+        .wrapper .section .top_navbar {
+            background: rgb(7, 105, 185);
+            height: 50px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+
+        }
+
+        .wrapper .section .top_navbar .hamburger a {
+            font-size: 28px;
+            color: #f4fbff;
+        }
+
+        .wrapper .section .top_navbar .hamburger a:hover {
+            color: #a2ecff;
+        }
+
+        .wrapper .section .container {
+            margin: 30px;
+            background: #fff;
+            padding: 50px;
+            /* line-height: 28px; */
+        }
+
+        body.active .wrapper .sidebar {
+            left: -180px;
+        }
+
+        body.active .wrapper .section {
+            margin-left: 50px;
+            width: 95%;
+        }
+
+        .item.hide {
+            display: none;
+        }
+
+        .icon.show {
+            float: right;
+
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .smaller {
+            padding: 17px 2px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="section">
+            <div class="row">
+                <div
+                    style="background-color: white;display: flex; flex-direction: row-reverse;height: 64px;align-items: center;">
+                    <i class="fas fa-chevron-down ml-18"></i>
+                    <p class="font-s-14 font-w-400 line-h-21">firstname.lastname@jp.kpmg.com</p>
+                </div>
+            </div>
+            <div style="margin: 20px 20px 20px; display: flex;">
+                <i class="fas fa-chevron-down ml-18"></i>
+                <p>dewfer</p>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <h1 style="width: 60%;  float: left;">ADD USER</h1>
+                    <div style="width: 40%;  float: left;">
+                        <button style="float: right;"> Save</button>
+                        <button style="float: right;margin-right: 10px;"> Cancel</button>
+
+                    </div>
+
+
+                </div>
+                <h1>Genaral Infor</h1>
+                <div class="input-wrap">
+
+                    <label for="">frf</label>
+                    <br>
+                    <input type="text" id="fname" name="fname"><br><br>
+                </div>
+                <div class="input-wrap">
+
+                    <label for="">frf</label>
+                    <br>
+                    <select name="cars" id="cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+                <h1>Name</h1>
+                <div class="input-wrap" style="display: flex;">
+                    <div>
+
+                        <label for="">frf</label>
+                        <br>
+                        <input type="text" id="fname" name="fname"><br><br>
+                    </div>
+                    <div>
+
+                        <label for="">frf</label>
+                        <br>
+                        <input type="text" id="fname" name="fname"><br><br>
+                    </div>
+                </div>
+                <div class="input-wrap" style="display: flex;">
+                    <div>
+
+                        <label for="">frf</label>
+                        <br>
+                        <input type="text" id="fname" name="fname"><br><br>
+                    </div>
+                    <div>
+
+                        <label for="">frf</label>
+                        <br>
+                        <input type="text" id="fname" name="fname"><br><br>
+                    </div>
+                </div>
+                <h1>Engagement information</h1>
+                <div class="input-wrap">
+
+                    <label for="">frf</label>
+                    <br>
+                    <input type="text" id="fname" name="fname"><br><br>
+                </div>
+                <p>ferrrrrffffffffffffffffffffff</p>
+                <p>ferrrrrffffffffffffffffffffff</p>
+                <p>-</p>
+                <p>ferrrrrffffffffffffffffffffff</p>
+                <p>-</p>
+                <div class="input-wrap">
+
+                    <label for="">frf</label>
+                    <br>
+                    <input type="text" id="fname" name="fname"><br><br>
+                </div>
+                <div class="input-wrap">
+
+                    <label for="">frf</label>
+                    <br>
+                    <input type="text" id="fname" name="fname"><br><br>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="profile" style="">
+                <p style="">KPMG CSR Survey</p>
+                <div class="hamburger" style="float: right;padding-left: 15px;">
+                    <a href="#">
+                        <i style="color:white" class="fas fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <ul>
+
+                    <li>
+                        <a class="small-item" href="#">
+                            <span class="icon"><i class="fas fa-home"></i></span>
+                            <span class="item">Home</span>
+
+                        </a>
+                    </li>
+                    <!-- <hr> -->
+                    <li>
+                        <a class="small-item" href="#">
+                            <span class="icon"><i class="fas fa-desktop"></i></span>
+                            <span class="item">Survey Admin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="small-item" href="#">
+                            <span class="icon"><i class="fas fa-user-friends"></i></span>
+                            <span class="item">Supplier Info</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="small-item" href="#">
+                            <span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+                            <span class="item">Engagement Info</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="small-item" href="#">
+                            <span class="icon"><i class="fas fa-database"></i></span>
+                            <span class="item">User Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    var hamburger = document.querySelector(".hamburger");
+    hamburger.addEventListener("click", function () {
+        document.querySelector("body").classList.toggle("active");
+        const highlightedItems = document.querySelectorAll(".item")
+        highlightedItems.forEach(function (userItem) {
+            userItem.classList.toggle("hide");
+        });
+        const icons = document.querySelectorAll(".icon");
+        icons.forEach(function (icon) {
+            icon.classList.toggle("show");
+        });
+        const aa = document.querySelectorAll(".small-item");
+        aa.forEach(function (i) {
+            i.classList.toggle("smaller");
+        });
+        document.querySelector(".profile").classList.toggle("small");
+    })
+</script>
+
+</html>
